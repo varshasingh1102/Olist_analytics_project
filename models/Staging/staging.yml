@@ -1,0 +1,94 @@
+version: 2
+
+models:
+
+  - name: stg_orders
+    description: "Cleaned and standardized Olist order data."
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: "Customer associated with the order."
+        data_tests:
+          - not_null
+
+      - name: order_status
+        description: "Current status of the order."
+        data_tests:
+          - not_null
+
+  - name: stg_customers
+    description: "Cleaned Olist customer data."
+    columns:
+      - name: customer_id
+        description: "Unique customer identifier."
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_products
+    description: "Cleaned Olist product data."
+    columns:
+      - name: product_id
+        description: "Unique product identifier."
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_sellers
+    description: "Cleaned Olist seller data."
+    columns:
+      - name: seller_id
+        description: "Unique seller identifier."
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_order_items
+    description: "Order-level product and seller information."
+    columns:
+      - name: order_id
+        description: "Order identifier."
+        data_tests:
+          - not_null
+
+      - name: product_id
+        description: "Product identifier."
+        data_tests:
+          - not_null
+
+      - name: seller_id
+        description: "Seller identifier."
+        data_tests:
+          - not_null
+
+  - name: stg_payments
+    description: "Payment transactions associated with Olist orders."
+    columns:
+      - name: order_id
+        description: "Order associated with the payment."
+        data_tests:
+          - not_null
+
+  - name: stg_reviews
+    description: "Customer reviews for Olist orders."
+    columns:
+      - name: review_id
+        description: "Review identifier."
+        data_tests:
+          - not_null
+
+      - name: order_id
+        description: "Order associated with the review."
+        data_tests:
+          - not_null
+
+  - name: stg_geolocation
+    description: "Brazilian postal-code geolocation data."
+
+  - name: stg_category_translation
+    description: "Portuguese to English product category translations."
